@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\V2\NotebooksController.cs" />
     <Compile Include="ApiControllers\V1\NotebooksController.cs" />
+    <Compile Include="ApiVersionControllerSelector.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 using VainillaOData.Models;
@@ -16,6 +17,8 @@ namespace VainillaOData
 				routeName: "Jorge",
 				routePrefix: "api/v1",
 				model: builder.GetEdmModel());
+
+			config.Services.Replace(typeof(IHttpControllerSelector), new ApiVersionControllerSelector(config));
 		}
 	}
 }
