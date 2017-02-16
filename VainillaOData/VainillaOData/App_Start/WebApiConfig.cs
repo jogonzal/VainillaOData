@@ -1,4 +1,7 @@
 ﻿using System.Web.Http;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
+using VainillaOData.Models;
 
 namespace VainillaOData
 {
@@ -6,14 +9,13 @@ namespace VainillaOData
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			// Web API routes
-			config.MapHttpAttributeRoutes();
+			ODataModelBuilder builder = new ODataConventionModelBuilder();
 
-			config.Routes.MapHttpRoute(
-				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
-			);
+			builder.EntitySet<NotebookModel>("Notebooks");
+			config.MapODataServiceRoute(
+				routeName: "Jorge",
+				routePrefix: "api/v1",
+				model: builder.GetEdmModel());
 		}
 	}
 }
